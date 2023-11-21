@@ -1046,8 +1046,8 @@ app.post('/paypal', ensureAuthenticated, (req, res) => {
             payment_method: 'paypal'
         },
         redirect_urls: {
-            return_url: 'http://localhost:3000/payment_success',
-            cancel_url: 'http://localhost:3000/payment_error'
+            return_url: 'https://forexsignals.onrender.com/payment_success',
+            cancel_url: 'https://forexsignals.onrender.com/payment_error'
         },
         transactions: [{
             item_list: {
