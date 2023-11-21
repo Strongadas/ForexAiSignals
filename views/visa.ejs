@@ -1,0 +1,50 @@
+<%- include('partials/header-user') %>
+<h2 class="fs-5"> <i class="fa-solid fa-file-contract"></i> Welcome to Payment Gateway</h2>
+
+<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+    <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/profile"><%= user.name %></a>
+        </li>
+    </ul>
+</div>
+<hr class="my-4 border-black">
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title text-center mb-4">Click <span class="text-success">Pay with Card </span> to Continue!</h3>
+                    <p class="text-muted text-center mb-4">
+                        Please note that your data will be secured by our system.
+                    </p>
+                    <form action="/payment" method="GET" class="text-center">
+                        <script src="//checkout.stripe.com/v2/checkout.js"
+                                class="stripe-button"
+                                data-key="<%= key %>"
+                                data-amount="<%= due %>"
+                                data-currency="USD"
+                                data-name="<%= user.name %>"
+                                data-description="Buy Contract Plan"
+                                data-locale="auto">
+                        </script>
+                      
+                    </form>
+                    <br>
+                    <p class="text-muted text-center mb-4">
+                        <span class="text-danger">Debit</span> and <span class="text-warning">Credit</span> Card are <span class="text-success">Supported</span>.
+                    </p>
+                    
+                    <div class="d-flex justify-content-center mt-3">
+                        <img src="https://i.ibb.co/vjQCN4y/Visa-Card.png" alt="" class="mr-3">
+                        <img src="https://i.ibb.co/vdbBkgT/mastercard.jpg" alt="" class="ml-3">
+                    </div> 
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer-user') %>

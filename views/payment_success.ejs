@@ -1,0 +1,48 @@
+<%- include("partials/header-user"); -%>
+<h2 class="fs-5 text-success"> Payment Success</span></h2>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/profile"><%= user.name %></a>
+            </li>
+
+        </ul>
+
+    </div>
+    
+    <hr class="my-4 border-black">
+
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <!-- Add a success message with an icon -->
+            <div class="alert alert-success text-center" role="alert">
+                <h4 class="alert-heading"><i class="fas fa-check-circle"></i> Contract Successful Activated</h4>
+                <p>Your Contract has been successfully Activated.</p>
+            </div>
+            <!-- Display additional payment details -->
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Contract Details</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>Name :</strong> <%= user.name %></li>
+                     <li class="list-group-item"><strong>Contract Name:</strong> <%= user.contract.toUpperCase() %></li>
+                        <li class="list-group-item"><strong>Contract Price:</strong> $<%= amount %></li>
+                        <li class="list-group-item"><strong>Contract Expiring : </strong> <%= contractExpiration %></li>
+                        
+
+                        <!-- Add more payment details here -->
+                    </ul>
+                </div>
+            </div>
+            <!-- Add a button to return to the homepage or a relevant page -->
+            <div class="text-center mt-4">
+                <a href="/dash" class="btn btn-primary">Back to Dashboard</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer-user') %>

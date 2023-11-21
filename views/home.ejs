@@ -1,0 +1,122 @@
+<%- include('partials/header') %>
+
+
+<div class="home">
+    <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2" class="active" aria-current="true"></button>
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+
+          <div class="carousel-item">
+            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <foreignObject width="100%" height="100%">
+                    <video class="w-100" autoplay muted>
+                        <source src="/images/bg-home.mp4" type="video/mp4">
+                        <!-- Add additional source elements for other video formats if needed -->
+                      </video>
+                </foreignObject>
+              </svg>
+              
+            <div class="container">
+              <div class="carousel-caption text-start">
+                <h1>The First World's Forex AI</h1>
+                <p class="opacity-100"><strong>Experience the future of trading</strong> with our <strong>AI-driven solutions</strong> and <strong>gain a competitive edge</strong> in the <strong>Forex market</strong>.</p>
+
+                <p><a class="btn btn-lg btn-success" href="">Sign up today</a></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item active">
+            
+            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <foreignObject width="100%" height="100%">
+                    <video class="w-100" autoplay muted>
+                        <source src="/images/money.mp4" type="video/mp4">
+                        
+                      </video>
+                </foreignObject>
+              </svg>
+              
+              
+            <div class="container">
+              <div class="carousel-caption">
+                <h1>Make Money Every 6 hours.</h1>
+                <p><strong>With our AI-based Forex signals, updated every 6 hours, achieve a 90% success rate.</strong></p>
+
+                <p><a class="btn btn-lg btn-warning text-white" href="#">Learn more</a></p>
+
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <foreignObject width="100%" height="100%">
+                    <video class="w-100" autoplay muted>
+                        <source src="/images/signals.mp4" type="video/mp4">
+                        
+                      </video>
+                </foreignObject>
+              </svg>
+              
+            <div class="container">
+              <div class="carousel-caption text-end">
+                <h1>Get Up to 3 Forex Signals Everyday.</h1>
+                <p>Receive daily signals for potential profit with our exclusive service. Get up to date trading recommendations and stay ahead of the market trends.</p>
+                <p><a class="btn btn-lg btn-primary" href="#">Pricing</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    
+</div>
+
+<div id="about">
+
+    <div class="container col-xxl-8 px-4 py-5">
+        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+          <div class="col-10 col-sm-8 col-lg-6">
+            <img src="/images/this.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+          </div>
+          <div class="col-lg-6">
+            <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">First World's Forex AI</h1>
+            <p class="lead">The First World's Forex AI represents a groundbreaking advancement in the world of foreign exchange trading. <br> 
+             Our cutting-edge AI technology provides traders with unprecedented insights, predictive analytics, and real-time market analysis. 
+            </p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+              <a href="#sign-up" type="button" class="btn btn-success btn-lg px-4 me-md-2">Get Signals</a>
+              <button type="button" class="btn btn-outline-danger btn-lg px-4">View Chart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+</div>
+
+
+<div id="pricing">
+    <%- include('pricing') %>
+</div>
+
+
+
+<div id="sign-up">
+    <%- include('register') %>
+</div>
+
+
+
+
+<%- include('partials/footer') %>

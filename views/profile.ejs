@@ -1,0 +1,56 @@
+<%- include("partials/header-user"); -%>
+<h2 class="fs-5"> <i class="fas fa-cog"></i> Settings</span></h2>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/profile"><%= user.name %></a>
+            </li>
+
+        </ul>
+
+    </div>
+    
+    <hr class="my-4 border-black">
+
+
+
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <!-- Form for updating users details -->
+            <div class="card mb-4 shadow-sm">
+                <div class="card-body">
+                    <form action="/profile" method="post" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="name" class="form-label"><i class='bx bxs-user'></i>Name</label>
+                            <input class="form-control" id="name" name="name" value="<%= user.name %>">
+                        </div>
+                        <div class="mb-3">
+                            <label for="username" class="form-label"><i class='bx bxs-inbox'></i>Email</label>
+                            <input class="form-control" id="username" name="username" value="<%= user.username %>">
+                        </div>
+                        <div class="mb-3">
+                            <label for="contract" class="form-label"><i class='fa-solid fa-file-contract'></i>   Contract Plan</label>
+                            <input class="form-control" id="contract" name="contract" value="<%= user.contract %>" readonly>
+                        </div>
+                        <p>Need to upgrade plan? <span><a href="/contract">Click here</a></span></p>
+
+                        <div class="mb-3">
+                            <label for="profile-img" class="form-label"><i class='bx bxs-image'></i> Profile Picture</label>
+                            <input type="file" class="form-control" id="profile-img" name="profile-img" >
+                        </div>
+
+                        <button type="submit" class="btn btn-outline-success">Update</button>
+                        <a href="/dash"><button type="submit" class="btn btn-outline-danger">Cancel</button></a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+ <%- include("partials/footer-user"); -%>

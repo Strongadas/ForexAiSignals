@@ -1,0 +1,248 @@
+<%- include('partials/header-user') %>
+<h2 class="fs-5"> <i class="fa-solid fa-file-contract"></i> Contracts</h2>
+
+<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+    <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/profile"><%= user.name %></a>
+        </li>
+    </ul>
+</div>
+
+<hr class="my-4 border-black">
+
+<section id="content">
+    <ul class="box-info">
+        <li>
+            <i class="bx bx-file"></i>
+            <span class="text">
+                <% if (user.contract !== 'false') { %>
+                    <% if (user.contract === 'starter') { %>
+                        <h3 class="text-black"><%= user.contract.toUpperCase() %></h3>
+                    <% } else if (user.contract === 'pro') { %>
+                        <h3 class="text-primary"><%= user.contract.toUpperCase() %></h3>
+                    <% } else if (user.contract === 'golden') { %>
+                        <h3 class="text-warning"><%= user.contract.toUpperCase() %></h3>
+                    <% } %>
+                <% } else { %>
+                    <!-- Handle the case when no contract is signed -->
+                    <h3>No Contracts</h3>
+                <% } %>
+                <p>Active Contracts</p>
+            </span>
+        </li>
+        <li>
+            <i class='bx bxs-group'></i>
+            <span class="text">
+                <h3>
+                    <% if (user.onlineClasses === true) { %>
+                        Access <i class="fas fa-check-circle"></i>
+                    <% } else { %>
+                        No Access <i class="fas fa-times-circle"></i>
+                    <% } %>
+                </h3>
+                <p>Online Classes ?</p>
+            </span>
+        </li>
+        <li>
+            <i class='bx bxs-dollar-circle'></i>
+            <span class="text">
+                <h3>$<%= user.totalSpent %></h3>
+                <p>Total Spent</p>
+            </span>
+        </li>
+    </ul>
+    <hr class="my-4 border-black">
+
+    <h3>Need to Upgrade Contracts ? <i class="fa-solid fa-file-contract"></i> </h3>
+    <!-- Plans -->
+    <div class="container py-3">
+        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+            <div class="col">
+                <div class="card mb-4 rounded-3 shadow-sm">
+                    <div class="card-header py-3">
+                        <h4 class="my-0 fw-normal"> <i class="fa-solid fa-file-contract"></i> Starter</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">$15<small class="text-body-secondary fw-light">/mo</small></h1>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li>Up to 2 Signals Everyday</li>
+                            <li>Access to our telegram Channel</li>
+                            <li>1 Month Subscription</li>
+                            <li>Email support</li>
+                            <li>Help center access</li>
+                        </ul>
+                        <label class="contract-button text-bg-default">
+                            <input type="radio" class="form-check-input" name="contract" id="starter" value="15">
+                            Get Started
+                        </label>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col">
+                <div class="card mb-4 rounded-3 shadow-sm">
+                    <div class="card-header py-3">
+                        <h4 class="my-0 fw-normal"> <i class="fa-solid fa-file-contract"></i> Pro</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">$30<small class="text-body-secondary fw-light">/mo</small></h1>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li>Up to 3 Signals Everyday</li>
+                            <li>Access to our telegram Channel</li>
+                            <li>1 Month Subscription</li>
+                            <li>Priority email support</li>
+                            <li>Help center access</li>
+                        </ul>
+                        <label class="contract-button">
+                            <input type="radio" class="form-check-input" name="contract" id="pro" value="30">
+                            Get Started
+                        </label>
+                    </div>
+                   
+                </div>
+            </div>
+            <div class="col">
+                <div class="card mb-4 rounded-3 shadow-sm border-gold">
+                    <div class="card-header py-3 text-bg-warning border-warning">
+                        <h4 class="my-0 fw-normal"> <i class="fa-solid fa-file-contract"></i> Golden</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">$200<small class="text-body-warning fw-light">/mo</small></h1>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li>3-4 Signals Everyday</li>
+                            <li>Private Whatsapp group</li>
+                            <li>Forex trading classes</li>
+                            <li>1 Month Subscription</li>
+                            <li>Phone and email support</li>
+                            <li>Help center access</li>
+                        </ul>
+                        <label class="contract-button text-bg-warning text-white">
+                            <input type="radio" class="form-check-input" name="contract" id="golden" value="200">
+                            Get Started
+                        </label>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Payments -->
+    <div class="container mt-5">
+        <div id="paymentForm" style="display: none">
+            <div class="title">
+                <h4>Select a <span style="color: #6064b6">Payment</span> method</h4>
+            </div>
+            
+
+            <form action="error" method="post">
+                <label for="amount">Amount to Pay:</label>
+                 <input type="text" class="form-control" id="amount" name="amount" readonly>
+
+                <input type="radio" name="payment" id="visa" class="radio">
+                <input type="radio" name="payment" id="mastercard" class="radio">
+                <input type="radio" name="payment" id="paypal" class="radio">
+                <input type="radio" name="payment" id="AMEX" class="radio">
+                
+                <div class="category">
+                    <label for="visa" class="visaMethod">
+                        <div class="imgName">
+                            <div class="imgContainer visa">
+                                <img src="/images/visa.png" alt="">
+                            </div>
+                            <span class="name">Credit / Debit Card</span>
+                        </div>
+                        <span class="check"><i class="fa-solid fa-circle-check" style="color: #6064b6;"></i></span>
+                    </label>
+                    <label for="mastercard" class="mastercardMethod">
+                        <div class="imgName">
+                            <div class="imgContainer mastercard">
+                                <img src="/images/skrill.png" alt="">
+                            </div>
+                            <span class="name">Skrill</span>
+                        </div>
+                        <span class="check"><i class="fa-solid fa-circle-check" style="color: #6064b6;"></i></span>
+                    </label>
+
+                    <label for="paypal" class="paypalMethod">
+                        <div class="imgName">
+                            <div class="imgContainer paypal">
+                                <img src="https://i.ibb.co/KVF3mr1/paypal.png" alt="">
+                            </div>
+                            <span class="name">Paypal</span>
+                        </div>
+                        <span class="check"><i class="fa-solid fa-circle-check" style="color: #6064b6;"></i></span>
+                    </label>
+
+                    <label for="AMEX" class="amexMethod">
+                        <div class="imgName">
+                            <div class="imgContainer AMEX">
+                                <img src="/images/btc.png" alt="">
+                            </div>
+                            <span class="name">BitCoin</span>
+                        </div>
+                        <span class="check"><i class="fa-solid fa-circle-check" style="color: #6064b6;"></i></span>
+                    </label>
+                </div>
+                <!-- Additional payment form fields can be added here -->
+                <br>
+                <p class="text-danger" style="display: none;" id="errorPay">Please Choose a Payment Method</p>
+                <button type="submit" class="btn btn-primary">Pay Now</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        const contractRadios = document.querySelectorAll('input[name="contract"]');
+        const paymentForm = document.getElementById('paymentForm');
+        const amountInput = document.getElementById('amount');
+        const form = paymentForm.querySelector('form');
+        const errorPay = document.getElementById('errorPay')
+    
+        // Add a change event listener to the contract radio buttons
+        contractRadios.forEach(radio => {
+            radio.addEventListener('change', () => {
+                const selectedRadio = document.querySelector('input[name="contract"]:checked');
+                const amount = selectedRadio ? selectedRadio.value : 0;
+    
+                if (amount) {
+                    paymentForm.style.display = 'block';
+                    amountInput.style.display = "block"
+                    amountInput.value = `${amount}`;
+                    console.log(amount); // Display the payment amount in the console
+                } else {
+                    paymentForm.style.display = 'none';
+                }
+            });
+        });
+    
+        // Add a change event listener to the radio buttons for payment method selection
+        const paymentMethodRadios = document.querySelectorAll('input[type=radio][name=payment]');
+        paymentMethodRadios.forEach(radio => {
+    radio.addEventListener('change', (e) => {
+        const selectedPaymentMethod = radio.id;
+
+        switch (selectedPaymentMethod) {
+            case 'paypal':
+                form.action = '/paypal';
+                
+                break;
+            case 'visa':
+                form.action = '/visa';
+                form.method="Post"
+                break;
+            case 'mastercard':
+                form.action = '/mastercard';
+                break;
+            case 'AMEX':
+                form.action = '/AMEX';
+                break;
+            default:
+                  errorPay.style.display = "block";
+                  
+        }
+    });
+});
+    </script>
+    
+
+<%- include('partials/footer-user') %>

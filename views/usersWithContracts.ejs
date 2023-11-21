@@ -1,0 +1,82 @@
+<%- include('partials/header-admin') %>
+<h2 class="fs-5"> <i class="fa-solid fa-file-contract"></i> All Contracts</h2>
+
+<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+    <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/profile"><%= user.name %></a>
+        </li>
+    </ul>
+</div>
+
+<hr class="my-4 border-black">
+
+<div id="content">
+    <div class="table-data">
+    <div class="order">
+        <div class="head">
+            <h3> <i class="fa-solid fa-file-contract"></i> Active Contracts: <span class="text-success"><%= countContracts %></span></h3>
+            <i class='bx bx-search'></i>
+            <i class='bx bx-filter'></i>
+        </div>
+        <hr>
+        <table>
+            <thead>
+                <tr>
+                    <th>Profile</th>
+                    <th>Name</th>
+                    <th>Contract</th>
+                    <th>Expiring </th>
+                    <th>Total Spent</th>
+
+                </tr>
+            </thead>
+            <tbody class="">
+                <% usersWithContracts.forEach(user => { %>
+                    <tr>
+                        <td>
+                            <% if (user.profileImage) { %>
+                                <img src="/uploads/<%= user.profileImage %>" alt="user-img" width="32" height="32" class="rounded-circle">
+                              <% } else { %>
+                                <!-- Alternative content goes here -->
+                                <img src="/images/user.png" alt="Profile Image" width="32" height="32" class="rounded-circle">
+                              <% } %>
+                        </td>
+                        <td class="text-black">@<%= user.name %></td>
+
+                        <td>
+                            <% if (user.contract === 'starter') { %>
+                                <span class="text-black"><%= user.contract.toUpperCase() %></span>
+                            <% } else if (user.contract === 'pro') { %>
+                                <span class="text-primary"><%= user.contract.toUpperCase() %></span>
+                            <% } else if (user.contract === 'golden') { %>
+                                <span class="text-warning"><%= user.contract.toUpperCase() %></span>
+                            <% } else { %>
+                                <%= user.contract.toUpperCase() %>
+                            <% } %>
+                        </td>
+
+                        <td class="text-warning">
+                            <% 
+                                // Extracting and formatting the date
+                                const contractExpirationDate = new Date(user.contractExpiration);
+                                const options = { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false };
+                                const formattedDate = contractExpirationDate.toLocaleString('en-US', options);
+                                // Displaying the formatted date in the table cell
+                            %>
+                            <%= formattedDate %>
+                        </td>
+                        <td class="text-success">$<%= user.totalSpent %></td>
+                        
+                    </tr>
+                <% }); %>
+            </tbody>
+            
+        </table>
+    </div>
+    
+</div>
+</div>
+
+
+<%- include('partials/footer-user') %>

@@ -1,0 +1,99 @@
+<%- include('partials/header-admin') %>
+<h2 class="fs-5"> <i class='bx bxs-chart'></i> Update Signal</h2>
+
+<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+    <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/profile"><%= user.name %></a>
+        </li>
+    </ul>
+</div>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h2 class="mb-4 text-dark">Publish Forex Signals</h2>
+      
+      <form id="forexSignalForm" action="/updateSignal" method="post" enctype="multipart/form-data">
+
+        <div class="form-group">
+          <label for="action">Action</label>
+          <input type="hidden" id="action" name="action">
+          
+          <select class="form-control" id="actionSelect">
+            <option value="">Select An Action</option>
+            <option value="Buy">Buy</option>
+            <option value="Sell">Sell</option>
+          </select>
+        </div>
+        <p class="text-danger" style="display: none;" id="error-action">Please Select an Action !</p>
+        
+        <div class="form-group">
+          <label for="currency">Currency</label>
+          <input type="text" class="form-control" id="currency" placeholder="Currency Pair" name="currency">
+        </div>
+        
+        <div class="form-group">
+          <label for="price">Price</label>
+          <input type="text" class="form-control" id="price" placeholder="Price" name="price">
+        </div>
+        
+        <div class="form-group">
+          <label for="stopLoss">Stop Loss (SL)</label>
+          <input type="text" class="form-control" id="stopLoss" placeholder="Stop Loss" name="stopLoss">
+        </div>
+        
+        <div class="form-group">
+          <label for="takeProfit">Take Profit (TP)</label>
+          <input type="text" class="form-control" id="takeProfit" placeholder="Take Profit" name="takeProfit">
+        </div>
+        <div class="form-group">
+          <label for="takeProfit">Proof</label>
+          <input type="file" class="form-control" id="proof" name="proof">
+        </div>
+        
+        <button type="submit" class="btn btn-success btn-block" id="btn" onclick="publishSignal()" >Publish Signal</button>
+      </form>
+    </div>
+  </div>
+  </div>
+
+  <!--Table -->
+
+  
+  <script>
+   
+   function publishSignal() {
+    const action = document.getElementById('action').value;
+    const currency = document.getElementById('currency').value;
+    const price = document.getElementById('price').value;
+    const stopLoss = document.getElementById('stopLoss').value;
+    const takeProfit = document.getElementById('takeProfit').value;
+    const errorAction = document.getElementById('error-action') 
+
+    console.log("Action:", action);
+    console.log("Currency:", currency);
+    console.log("Price:", price);
+    console.log("Stop Loss:", stopLoss);
+    console.log("Take Profit:", takeProfit);
+  }
+
+  // Event listener for change in the select element
+  document.getElementById('actionSelect').addEventListener('change', function() {
+    const actionSelect = document.getElementById('actionSelect');
+    const selectedValue = actionSelect.options[actionSelect.selectedIndex].value;
+
+    if (selectedValue === 'Buy' || selectedValue === 'Sell') {
+      document.getElementById('action').value = selectedValue;
+    } else {
+        errorAction.style.display = "block"
+      document.getElementById('action').value = '';
+      
+    }
+  });
+
+  </script>
+
+<%- include('partials/footer-user') %>
+
+

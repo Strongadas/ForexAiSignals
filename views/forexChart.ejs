@@ -1,0 +1,92 @@
+<%- include('partials/header-user') %>
+<h2 class="fs-5"> <i class='bx bxs-chart'></i></i> Chart</h2>
+
+<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+    <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/profile"><%= user.name %></a>
+        </li>
+    </ul>
+</div>
+
+<div class="container">
+    <h2 class="mt-4 mb-4 text-center">Forex Exchange</h2>
+
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <th>Currency</th>
+                <th>Currency Pair</th>
+                <th>Exchange Rate</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% Object.keys(forexData).forEach(currency => { %>
+                <tr>
+                    <td>EUR</td> <!-- Change "EUR" to "USD" if you want to specify it as the base currency -->
+                    <td><%= currency %></td>
+                    <td style="color: <%= forexData[currency] > 0.93577 ? 'green' : 'red' %>;"><%= forexData[currency] %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+
+    <div id="forexChartContainer" style="height: 400px;"></div>
+    <h1>Forex Data Chart</h1>
+     <canvas id="forexChart"></canvas>
+
+
+</div>    
+
+            
+
+    <script>
+        // Your chart data
+const forexData = {
+    EUR: [0.9355, 0.9360, 0.9375, 0.9363, 0.9380],
+    GBP: [1.2910, 1.2925, 1.2903, 1.2940, 1.2928],
+    JPY: [109.50, 109.45, 109.60, 109.35, 109.70]
+};
+
+// Extract currency pairs
+const currencies = Object.keys(forexData);
+
+// Create a Chart.js dataset
+const dataset = currencies.map(currency => ({
+    label: currency,
+    data: forexData[currency], // Use the specific currency data
+    borderColor: forexData[currency][forexData[currency].length - 1] > forexData[currency][0] ? 'green' : 'red',
+    fill: false,
+}));
+
+// Create a Chart.js chart
+const ctx = document.getElementById('forexChart').getContext('2d');
+new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ['Date 1', 'Date 2', 'Date 3', 'Date 4', 'Date 5'], // Replace with actual dates
+        datasets: dataset,
+    },
+    options: {
+        responsive: true,
+        scales: {
+            x: {
+                display: true,
+                title: {
+                    display: true,
+                    text: 'Date',
+                },
+            },
+            y: {
+                display: true,
+                title: {
+                    display: true,
+                    text: 'Exchange Rate',
+                },
+            },
+        },
+    },
+});
+
+    </script>
+<%- include('partials/footer-user') %>

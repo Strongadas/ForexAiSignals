@@ -1,0 +1,54 @@
+<%- include("partials/header-user"); -%>
+<h2 class="fs-5 text-black"> <i class="fas fa-play"></i>  Online Classes</span></h2>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/profile"><%= user.name %></a>
+            </li>
+
+        </ul>
+
+    </div>
+    
+    <hr class="my-4 border-black">
+
+    <% if (user.onlineClasses !== false) { %>
+
+        <main class="containera">
+            <div class="videos">
+                <% videos.forEach((video, index) => { %>
+                    <div class="video">
+                        
+                        <video src="/uploads/<%= video.videoPath %>" controls></video>
+                        <h3 class="title"><span class="number"><%= index + 1 %> - </span> <%= video.title %></h3>
+                        <p class="duration"><%= video.duration %></p>
+                    </div>
+                <% }); %>
+            </div>
+        </main>
+        
+        
+	
+
+
+
+
+
+
+    <% } else { %>
+
+        <div class="container text-center">
+            <!-- Display a message or alternative content when user.contract is 'false' -->
+            <p class="text-danger">The Online Classes Section is online for <span class="text-warning">Golden Users</span>  , <span class="text-primary">Please Upgrade your current contract to a Golden One .</span></p>
+            <a href="/contract" class="btn btn-outline-success">Upgrade Contract</a>
+        </div>
+        
+
+    <% } %>
+
+
+
+
+
+<%- include('partials/footer-user') %>

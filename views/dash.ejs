@@ -1,0 +1,164 @@
+<%- include('partials/header-user') %>
+
+<h2 class="fs-5"> <i class="fa-solid  fa-home"></i>  Dashboard</h2>
+
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/profile"><%= user.name %></a>
+               
+            </li>
+            
+
+        </ul>
+
+    </div>
+    
+    <hr class="my-4 border-black">
+
+
+
+<div class="signals">
+<section id="content">
+    <ul class="box-info">
+        <li>
+            <i class='bx bxs-chart' ></i>
+            <span class="text">
+                <h3><%= count %></h3>
+                <p>All Signals</p>
+            </span>
+        </li>
+        <li>
+            <i class="bx bx-file"></i>
+            <span class="text">
+                <% if (user.contract !== 'false') { %>
+                    <% if (user.contract === 'starter') { %>
+                        <h3 class="text-black"><%= user.contract.toUpperCase() %></h3>
+                    <% } else if (user.contract === 'pro') { %>
+                        <h3 class="text-primary"><%= user.contract.toUpperCase() %></h3>
+                    <% } else if (user.contract === 'golden') { %>
+                        <h3 class="text-warning"><%= user.contract.toUpperCase() %></h3>
+                    <% } %>
+                <% } else { %>
+                    <!-- Handle the case when no contract is signed -->
+                
+                    <h3>No Contracts</h3>
+                  <% } %>
+                  
+                <p>Contract Type</p>
+            </span>
+        </li>
+        <li>
+            <i class='bx bxs-dollar-circle' ></i>
+            <span class="text">
+                <h3>$<%= user.totalSpent %></h3>
+                <p>Total Spent</p>
+            </span>
+        </li>
+    </ul>
+
+<!--Table-->
+<% if (user.contract !== 'false') { %>
+  
+             <!-- Table -->
+<div class="table-data">
+    <div class="order">
+        <div class="head">
+            <h3>Recent Forex Signals</h3>
+            <i class='bx bx-search'></i>
+            <i class='bx bx-filter'></i>
+        </div>
+        <hr>
+        <table>
+            <thead>
+                <tr>
+                    <th>Action</th>
+                    <th>Currency</th>
+                    <th>Price</th>
+                    <th>Stop Loss (SL)</th>
+                    <th>Take Profit (TP)</th>
+                    <th>Proof</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody class="">
+                <% signals.slice().reverse().forEach(signal => { %>
+                    <tr class="<%= signal.action.toLowerCase() === 'buy' ? 'buy-row' : 'sell-row' %> alert alert-info">
+                        <td id="<%= signal.action.toLowerCase() %>">
+                            <% if (signal.action.toLowerCase() === 'buy') { %>
+                                <i class="fas fa-arrow-right"></i>
+                            <% } else { %>
+                                <i class="fas fa-arrow-left"></i>
+                            <% } %>
+                            <%= signal.action %>
+                        </td>
+                        <td><%= signal.currency %></td>
+                        <td><%= signal.price %></td>
+                        <td><%= signal.stopLoss %></td>
+                        <td><%= signal.takeProfit %></td>
+                        
+                        <td>
+                            <% if (signal.proof) { %>
+                                <a href="/view-proof?img=/uploads/<%= encodeURIComponent(signal.proof) %>"
+                                    class="btn btn-primary btn-sm" target="_blank">
+                                    View Proof
+                                </a>
+                            <% } else { %>
+                                <p class="text-danger">No Proof Available</p>
+                            <% } %>
+                        </td>
+                        <td style="font-size: 13px;"><%= signal.updatedTime %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+    
+</div>
+
+    <% } else { %>
+        <hr>
+        <div class="container text-center">
+            <!-- Display a message or alternative content when user.contract is 'false' -->
+            <h2 class="text-danger">Access Denied <i class="fa-solid  fa-lock"></i> </h2>
+            <p class="text-danger"><i class="fa-solid fa-file-contract"></i> No contracts found, <span class="text-warning">Please Sign a Contract and receive signals updates 3x or more a day.</span></p>
+            <a href="/contract" class="btn btn-primary">Buy Contract</a>
+        </div>
+        
+      <% } %>
+</section>
+</div>
+
+
+
+
+
+</div>
+</div>
+</div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <%- include('partials/footer-user') %>
+
+
+
+
+

@@ -1,0 +1,56 @@
+<%- include('partials/header-user') %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-7">
+      <h4>Get in touch</h4>
+      <form action="/contact" method="post">
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" placeholder="Enter your name" name="name" value="<%= user.name %>" readonly>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter your email" name="username" value="<%= user.username %>" readonly>
+        </div>
+        <div class="mb-3">
+          <label for="contact-number" class="form-label">Contact Number</label>
+          <input type="tel" class="form-control" id="contact-number" placeholder="Enter your number" name="contact-number">
+        </div>
+        <div class="mb-3">
+          <label for="message" class="form-label">Message</label>
+          <textarea class="form-control" id="message" rows="3" name="message" required></textarea>
+        </div>
+        <button  type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+    <div class="col-md-5">
+      <h4>Contact us</h4>
+      <hr>
+      <div class="mt-4">
+        <div class="d-flex">
+          <i class="bi bi-geo-alt-fill"></i>
+          <p class="ml-2">Address: Availible soon</p>
+        </div>
+        <hr>
+        <div class="d-flex">
+          <i class="bi bi-telephone-fill"></i>
+          <p class="ml-2">Contact: +27062277352</p>
+        </div>
+        <hr>
+        <div class="d-flex">
+          <i class="bi bi-envelope-fill"></i>
+          <p class="ml-2">Email: strongadas009@gmail.com</p>
+        </div>
+        <hr>
+        <div class="d-flex">
+          <i class="bi bi-browser-chrome"></i>
+          <p class="ml-2">Website: www.forexai.com</p>
+        </div>
+        <hr>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer-user') %>

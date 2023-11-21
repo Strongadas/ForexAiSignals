@@ -1,0 +1,102 @@
+<div class="container col-xl-10 col-xxl-8 px-4 py-5">
+  <div class="row align-items-center g-lg-5 py-5">
+    <div class="col-lg-7 text-center text-lg-start">
+      <h4 class="display-6 fw-bold text-body-emphasis mb-3">Sign Up for Our Forex AI </h4>
+      <p class="col-lg-10 fs-4">With our platform, you'll stay ahead of the market trends and maximize your trading success. Don't miss out on the future of Forex trading – join us and embark on your journey to financial excellence.</p>
+    </div>
+    <div class="col-md-10 mx-auto col-lg-5">
+      <form class="p-4 p-md-5 border rounded-3 bg-body-tertiary" action="/register" method="post">
+
+        <div class="form-floating mb-3">
+          <input type="name" class="form-control" id="floatingInputname" placeholder="name" name="name">
+          <label for="floatingInput">Name</label>
+        </div>
+          <p class="text-danger" style="display:none;" id="error-name">Please enter a Name , this field can't be empty.</p>
+          <p class="text-danger" style="display:none;" id="error-num">Please enter a Name not Numbers</p>
+          <p class="text-success" style="display:none;" id="successName">The name is Okay</p>
+
+
+        <div class="form-floating mb-3">
+          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" required name="username">
+          <label for="floatingInput">Email address</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
+          <label for="floatingPassword">Password</label>
+        </div>
+        <p class="text-danger" style="display:none;" id="error-pass">Please enter a Password , this field can't be empty.</p>
+        <p class="text-danger" style="display:none;" id="error-pass-weak">Please enter a Strong Password , this Password is too weak.</p>
+
+        <p class="text-success" style="display:none;" id="success">Everthing is Okay. <br> Please wait we registering you!.</p>
+
+
+        <div class="checkbox mb-3">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit" id="submit">Sign up</button>
+        <hr class="my-4">
+        <small class="text-body-secondary">By clicking Sign up, you agree to the terms of use.</small>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+
+  const name = document.getElementById('floatingInputname')
+  const email = document.getElementById('floatingInput')
+  const password = document.getElementById('floatingPassword')
+  const errorName = document.getElementById('error-name')
+  const errorNum = document.getElementById('error-num')
+  const errorPass = document.getElementById('error-pass')
+  const success = document.getElementById('success')
+  const successName = document.getElementById('successName')
+  const errorPassWeak = document.getElementById('error-pass-weak')
+
+  const submit = document.getElementById('submit')
+
+  submit.addEventListener('click',(e)=>{
+
+   if (name.value === '') {
+  e.preventDefault();
+  errorNum.style.display = "none";
+  errorName.style.display = "block";
+  
+} else if (!isNaN(name.value)) {
+  e.preventDefault();
+  errorName.style.display = "none";
+  errorNum.style.display = "block";
+
+  
+
+
+}else if(password.value === ''){
+  e.preventDefault()
+  errorPass.style.display="block"
+  errorPassWeak.style.display="none"
+
+}else if (password.value.length <= 5 || (!isNaN(password.value))){
+
+  e.preventDefault()
+  errorPassWeak.style.display="block"
+  errorPass.style.display="none"
+
+} else{
+
+  errorName.style.display = "none";
+  errorNum.style.display = "none";
+  errorPass.style.display="none"
+  errorPassWeak.style.display="none"
+
+  //Sucess sms
+  success.style.display="block"
+}
+
+
+  })
+  
+
+
+</script>

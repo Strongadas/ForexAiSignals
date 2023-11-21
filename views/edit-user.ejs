@@ -1,0 +1,49 @@
+<%- include('partials/header-admin') %>
+<h2 class="fs-5"> <i class="fa-solid fa-users"></i> All Users</h2>
+
+<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+    <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/profile"><%= user.name %></a>
+        </li>
+    </ul>
+</div>
+
+<hr class="my-4 border-black">
+<div class="container mt-4">
+        <h1>Edit User</h1>
+        <form action="/update-user/<%= user._id %>" method="POST">
+            <!-- Edit user form with Bootstrap styling -->
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="name" value="<%= user.name %>">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" value="<%= user.username %>">
+            </div>
+            <div class="form-group">
+                <label for="contract">Contract:</label>
+                <input type="text" class="form-control" id="contract" name="contract" value="<%= user.contract %>">
+            </div>
+            <div class="form-group">
+                <label for="admin">Admin:</label>
+                <select class="form-control" id="admin" name="admin">
+                    <option value="true" <% if (user.admin === true) { %> selected <% } %>>Yes</option>
+                    <option value="false" <% if (user.admin !== true) { %> selected <% } %>>No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="onlineClasses">onlineClasses:</label>
+                <input type="text" class="form-control" id="onlineClasses" name="onlineClasses" value="<%= user.onlineClasses %>" readonly>
+            </div>
+           
+            
+            
+
+            <!-- Additional fields for editing -->
+
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </div>
